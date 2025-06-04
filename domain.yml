@@ -1,0 +1,130 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - return_policy
+  - shipping_info
+  - payment_methods
+  - track_order
+  - ask_help
+  - ask_contact
+  - product_inquiry
+  - nlu_fallback  # ✅ Added for handling unrecognized inputs
+
+responses:
+  utter_greet:
+    - text: "Hey! How are you?"
+    - text: "Hello! How can I help you today?"
+    - text: "Hi there! What can I do for you?"
+
+  utter_cheer_up:
+    - text: "Here is something to cheer you up:"
+      image: "https://i.imgur.com/nGF1K8f.jpg"
+    - text: "Don't worry, I'm here to help! Things will get better 😊"
+    - text: "I understand you're feeling down. Let me try to assist you better."
+
+  utter_did_that_help:
+    - text: "Did that help you?"
+    - text: "Was that information helpful?"
+    - text: "Does that answer your question?"
+
+  utter_happy:
+    - text: "Great, carry on!"
+    - text: "Awesome! Glad I could help!"
+    - text: "Perfect! Is there anything else you need?"
+
+  utter_goodbye:
+    - text: "Bye"
+    - text: "Goodbye! Have a great day!"
+    - text: "Take care! Feel free to come back anytime."
+
+  utter_iamabot:
+    - text: "I am a bot, powered by Rasa."
+    - text: "Yes, I'm a chatbot designed to help with your questions!"
+    - text: "I'm an AI assistant here to help you with orders, returns, and more."
+
+  # ✅ ENHANCED: Better responses with multiple variations
+  utter_track_order:
+    - text: "You can track your order by entering your order number on our tracking page. Would you like me to help you with that?"
+    - text: "To track your order, please visit our tracking page with your order number. Do you have your order number ready?"
+    - text: "I can help you track your order! Please provide your order number or visit our tracking portal."
+
+  utter_return_policy:
+    - text: "You can return any product within 30 days as long as it's unused and in its original packaging. Let me know if you need more details!"
+    - text: "Our return policy allows returns within 30 days of purchase. Items must be unused and in original packaging. Need help with a return?"
+    - text: "Returns are accepted within 30 days if items are unused and in original packaging. Would you like to start a return process?"
+
+  utter_shipping_info:
+    - text: "Standard shipping takes 5-7 days, and express shipping takes 2-3 days. You can track your order anytime!"
+    - text: "We offer standard delivery (5-7 days) and express delivery (2-3 days). All orders include tracking!"
+    - text: "Shipping options: Standard 5-7 days, Express 2-3 days. Free tracking included with all orders!"
+
+  utter_payment_methods:
+    - text: "We accept credit cards, PayPal, and cash on delivery. Let me know if you need help with payments!"
+    - text: "Payment options include: Credit/Debit cards, PayPal, and Cash on Delivery. All payments are secure!"
+    - text: "You can pay using cards, PayPal, or cash on delivery. Having payment issues? I can help!"
+
+  # ✅ NEW: Additional helpful responses
+  utter_help:
+    - text: "I'm here to help! I can assist with orders, returns, shipping, payments, and product information. What do you need help with?"
+    - text: "Sure! I can help you with tracking orders, return policies, shipping info, payment methods, and more. What's your question?"
+    - text: "I'd be happy to help! Ask me about orders, returns, shipping, payments, or products. What can I assist you with?"
+
+  utter_contact:
+    - text: "You can reach our customer service at support@company.com or call 1-800-SUPPORT (1-800-786-7678). We're here 24/7!"
+    - text: "Contact us: Email support@company.com, Phone 1-800-SUPPORT, or use our live chat. We're always ready to help!"
+    - text: "Get in touch: support@company.com, 1-800-SUPPORT, or chat with us anytime. Our support team is available 24/7!"
+
+  utter_product_info:
+    - text: "We offer a wide range of products! What specific category are you interested in? I can provide details about our latest items."
+    - text: "Our product catalog includes electronics, clothing, home goods, and more! What type of product are you looking for?"
+    - text: "We have various products across multiple categories. What kind of item are you shopping for today?"
+
+  # ✅ CRITICAL: Fallback response for unrecognized inputs
+  utter_default:
+    - text: "I'm sorry, I didn't understand that. I can help with orders, returns, shipping, payments, and product info. What would you like to know?"
+    - text: "I didn't catch that. Try asking about order tracking, returns, shipping, payments, or our products. How can I help?"
+    - text: "Could you rephrase that? I specialize in helping with orders, returns, shipping info, and payments. What do you need assistance with?"
+
+# ✅ NEW: Added slots for better conversation management
+slots:
+  order_number:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_text
+      intent: track_order
+      
+  user_name:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_text
+
+# ✅ ENHANCED: Better session configuration
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+
+# ✅ NEW: Added actions list for clarity
+actions:
+  - utter_greet
+  - utter_cheer_up
+  - utter_did_that_help
+  - utter_happy
+  - utter_goodbye
+  - utter_iamabot
+  - utter_track_order
+  - utter_return_policy
+  - utter_shipping_info
+  - utter_payment_methods
+  - utter_help
+  - utter_contact
+  - utter_product_info
+  - utter_default

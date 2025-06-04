@@ -1,0 +1,149 @@
+version: "3.1"
+
+stories:
+  # ✅ Original mood-based stories
+  - story: happy path
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: mood_great
+      - action: utter_happy
+
+  - story: sad path 1
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: mood_unhappy
+      - action: utter_cheer_up
+      - action: utter_did_that_help
+      - intent: affirm
+      - action: utter_happy
+
+  - story: sad path 2
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: mood_unhappy
+      - action: utter_cheer_up
+      - action: utter_did_that_help
+      - intent: deny
+      - action: utter_goodbye
+
+  # ✅ Enhanced FAQ stories with realistic conversation flows
+  - story: Ask about return policy and confirm understanding
+    steps:
+      - intent: return_policy
+      - action: utter_return_policy
+      - intent: affirm
+      - action: utter_happy
+
+  - story: Ask about shipping info and follow up with tracking
+    steps:
+      - intent: shipping_info
+      - action: utter_shipping_info
+      - intent: track_order
+      - action: utter_track_order
+
+  - story: Ask about payment methods and express concern
+    steps:
+      - intent: payment_methods
+      - action: utter_payment_methods
+      - intent: mood_unhappy
+      - action: utter_cheer_up
+
+  # ✅ NEW: Complete customer service journey stories
+  - story: Customer needs help with order tracking
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: track_order
+      - action: utter_track_order
+      - intent: affirm
+      - action: utter_happy
+
+  - story: Customer wants to return an item
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: return_policy
+      - action: utter_return_policy
+      - intent: ask_help
+      - action: utter_help
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - story: Customer inquires about shipping and payments
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: shipping_info
+      - action: utter_shipping_info
+      - intent: payment_methods
+      - action: utter_payment_methods
+      - intent: affirm
+      - action: utter_happy
+
+  - story: Customer needs contact information
+    steps:
+      - intent: ask_help
+      - action: utter_help
+      - intent: ask_contact
+      - action: utter_contact
+      - intent: affirm
+      - action: utter_happy
+
+  - story: Customer browses products then tracks order
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: product_inquiry
+      - action: utter_product_info
+      - intent: track_order
+      - action: utter_track_order
+      - intent: goodbye
+      - action: utter_goodbye
+
+  # ✅ NEW: Fallback and recovery stories
+  - story: Fallback and help recovery
+    steps:
+      - intent: nlu_fallback
+      - action: utter_default
+      - intent: ask_help
+      - action: utter_help
+
+  - story: Multiple fallbacks then successful interaction
+    steps:
+      - intent: nlu_fallback
+      - action: utter_default
+      - intent: nlu_fallback
+      - action: utter_default
+      - intent: track_order
+      - action: utter_track_order
+
+  # ✅ NEW: Complex multi-turn conversations
+  - story: Customer service escalation path
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: track_order
+      - action: utter_track_order
+      - intent: mood_unhappy
+      - action: utter_cheer_up
+      - action: utter_did_that_help
+      - intent: deny
+      - action: utter_contact
+
+  - story: Complete order issue resolution
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: track_order
+      - action: utter_track_order
+      - intent: return_policy
+      - action: utter_return_policy
+      - intent: ask_contact
+      - action: utter_contact
+      - intent: affirm
+      - action: utter_happy
+      - intent: goodbye
+      - action: utter_goodbye
