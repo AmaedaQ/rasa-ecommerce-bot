@@ -23,16 +23,7 @@ Intelligent chatbot for e-commerce customer support built with Rasa framework. H
 - **Language**: Python 3.8+
 - **NLP**: Rasa NLU + spaCy
 
-## Architecture
 
-```mermaid
-graph LR
-    A[React UI] --> B[Node.js API]
-    B --> C[Rasa Core]
-    C --> D[Custom Actions]
-    D --> E[E-commerce API]
-    C --> F[NLU Pipeline]
-```
 
 ## Quick Start
 
