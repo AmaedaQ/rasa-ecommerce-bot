@@ -1,3 +1,4 @@
+
 # Rasa E-commerce Assistant
 
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
@@ -6,70 +7,87 @@
 
 ## Overview
 
-Intelligent chatbot for e-commerce customer support built with Rasa framework. Handles order tracking, product inquiries, and customer service through natural language conversations.
+An AI-powered chatbot for e-commerce platforms built using the Rasa framework. Handles customer queries related to order tracking, product information, and general support through natural language conversations.
 
 ## Features
 
-- **Order Management**: Track orders with ID validation, return policy assistance
-- **Product Support**: Search products, check inventory, provide specifications  
-- **Smart Conversations**: Intent recognition, entity extraction, context awareness
-- **Customer Service**: Payment support, shipping info, mood-based responses
+- Order tracking with ID validation
+- Product search and inventory checking
+- Return and refund policy assistance
+- Payment and shipping information
+- Context-aware and intent-based conversation flows
 
 ## Tech Stack
 
-- **AI Framework**: Rasa Open Source 3.x
-- **Frontend**: React.js
-- **Backend**: Node.js/Express
+- **AI/NLP**: Rasa Open Source 3.x, spaCy
+- **Frontend**: React.js (18+)
+- **Backend**: Node.js + Express
 - **Language**: Python 3.8+
-- **NLP**: Rasa NLU + spaCy
 
-
-
-## Quick Start
+## Setup Instructions
 
 ```bash
-# Setup
+# Clone the repository
 git clone <repo-url>
 cd rasa-ecommerce-assistant
-python -m venv venv && source venv/bin/activate
-pip install -r requirements.txt && npm install
 
-# Train & Run
+# Python environment
+python -m venv venv
+source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+
+# Install Python dependencies
+pip install -r requirements.txt
+
+# Install frontend dependencies
+cd src
+npm install
+cd ..
+
+# Train and run the assistant
 rasa train
 rasa run --enable-api --port 5005 &
 rasa run actions --port 5055 &
+cd src
 npm start
-```
+````
 
-## Core Capabilities
+## Supported Intents
 
-### Supported Intents
-- `track_order` - Order status with ID validation
-- `return_policy` - Return process information
-- `product_search` - Product discovery
-- `shipping_info` - Delivery details
-- `payment_methods` - Payment support
+* `track_order`: Track orders by order ID
+* `return_policy`: Provide return/refund details
+* `product_search`: Discover available products
+* `shipping_info`: Offer shipping and delivery details
+* `payment_methods`: List accepted payment options
 
-### Entity Recognition
-- Order IDs, product names, payment types, shipping methods
+## Entity Recognition
+
+* Order IDs
+* Product names
+* Shipping types
+* Payment methods
 
 ## Project Structure
 
 ```
-├── actions/           # Custom business logic
-├── data/             # Training data (NLU, stories, rules)
-├── src/              # React frontend
-├── config.yml        # Rasa configuration
-├── domain.yml        # Intents, entities, responses
-└── models/           # Trained models
+rasa-ecommerce-assistant/
+├── actions/            # Custom action code
+├── data/               # NLU training data, stories, and rules
+├── models/             # Trained Rasa models
+├── src/                # React frontend
+├── config.yml          # Rasa pipeline and policies
+├── domain.yml          # Intents, entities, slots, responses
+├── endpoints.yml       # Action server and tracker store config
+└── requirements.txt    # Python dependencies
 ```
 
-## Performance
+## Performance Metrics
 
-- Response time: <200ms
-- Intent accuracy: 95%+
-- Concurrent users: 50+
+* Response latency: < 200ms
+* Intent classification accuracy: 95%+
+* Handles up to 50 concurrent users (test environment)
 
 ## License
 
-MIT License
+This project is licensed under the MIT License.
+
+
