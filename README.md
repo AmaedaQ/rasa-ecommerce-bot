@@ -1,93 +1,94 @@
 
-# Rasa E-commerce Assistant
+# Rasa E-Commerce Assistant
 
-[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
-[![Rasa 3.x](https://img.shields.io/badge/Rasa-3.x-green.svg)](https://rasa.com/docs/)
-[![React](https://img.shields.io/badge/React-18+-61DAFB.svg)](https://reactjs.org/)
+[![Python](https://img.shields.io/badge/Python-3.8+-3776AB?logo=python&logoColor=white)](https://www.python.org/downloads/)
+[![Rasa](https://img.shields.io/badge/Rasa-3.x-5A17EE?logo=rasa)](https://rasa.com/docs/)
+[![React](https://img.shields.io/badge/React-18+-61DAFB?logo=react&logoColor=white)](https://react.dev/)
 
-## Overview
+AI-driven conversational assistant for e-commerce workflows.  
+Built on **Rasa 3.x** for intent classification and dialogue management, with a **React** frontend and **Node.js** middleware.
 
-An AI-powered chatbot for e-commerce platforms built using the Rasa framework. Handles customer queries related to order tracking, product information, and general support through natural language conversations.
+---
 
-## Features
+## Core Capabilities
 
-- Order tracking with ID validation
-- Product search and inventory checking
-- Return and refund policy assistance
-- Payment and shipping information
-- Context-aware and intent-based conversation flows
+- Order tracking via validated IDs  
+- Product and inventory lookup  
+- Return / refund flow automation  
+- Payment and shipping inquiries  
+- Context-aware multi-turn conversations  
+
+---
 
 ## Tech Stack
 
-- **AI/NLP**: Rasa Open Source 3.x, spaCy
-- **Frontend**: React.js (18+)
-- **Backend**: Node.js + Express
-- **Language**: Python 3.8+
+| Layer | Technologies |
+|-------|---------------|
+| NLP / AI | Rasa Open Source 3.x, spaCy |
+| Frontend | React 18+ |
+| Backend | Node.js, Express |
+| Language | Python 3.8+ |
 
-## Setup Instructions
+---
+
+## Quick Start
 
 ```bash
-# Clone the repository
 git clone <repo-url>
 cd rasa-ecommerce-assistant
 
 # Python environment
 python -m venv venv
-source venv/bin/activate  # On Windows use `venv\Scripts\activate`
-
-# Install Python dependencies
+source venv/bin/activate  # Windows: venv\Scripts\activate
 pip install -r requirements.txt
 
-# Install frontend dependencies
-cd src
-npm install
-cd ..
+# Frontend setup
+cd src && npm install && cd ..
 
-# Train and run the assistant
+# Train and launch
 rasa train
 rasa run --enable-api --port 5005 &
 rasa run actions --port 5055 &
-cd src
-npm start
+cd src && npm start
 ````
 
-## Supported Intents
+---
 
-* `track_order`: Track orders by order ID
-* `return_policy`: Provide return/refund details
-* `product_search`: Discover available products
-* `shipping_info`: Offer shipping and delivery details
-* `payment_methods`: List accepted payment options
+## Intents & Entities
 
-## Entity Recognition
+**Intents:**
+`track_order`, `return_policy`, `product_search`, `shipping_info`, `payment_methods`
 
-* Order IDs
-* Product names
-* Shipping types
-* Payment methods
+**Entities:**
+`order_id`, `product_name`, `shipping_type`, `payment_method`
 
-## Project Structure
+---
+
+## Directory Layout
 
 ```
 rasa-ecommerce-assistant/
-├── actions/            # Custom action code
-├── data/               # NLU training data, stories, and rules
-├── models/             # Trained Rasa models
-├── src/                # React frontend
-├── config.yml          # Rasa pipeline and policies
-├── domain.yml          # Intents, entities, slots, responses
-├── endpoints.yml       # Action server and tracker store config
-└── requirements.txt    # Python dependencies
+├── actions/          # Custom Python actions
+├── data/             # NLU data, stories, rules
+├── models/           # Trained Rasa models
+├── src/              # React client
+├── config.yml        # Rasa pipeline & policies
+├── domain.yml        # Intents, entities, slots, responses
+├── endpoints.yml     # Action server configuration
+└── requirements.txt  # Python dependencies
 ```
 
-## Performance Metrics
+---
 
-* Response latency: < 200ms
-* Intent classification accuracy: 95%+
-* Handles up to 50 concurrent users (test environment)
+## Benchmarks
+
+* Response latency < 200 ms
+* Intent accuracy ≥ 95%
+* ~50 concurrent sessions (test environment)
+
+---
 
 ## License
 
-This project is licensed under the MIT License.
-
+MIT © Contributors
 
